@@ -65,6 +65,7 @@ const ViteFixNaiveuiIcon = ({ apply }: Option): Plugin[] => {
     {
       // 修复replaceable导致的内存泄漏
       name: 'vite-fix-naiveui-icon-replaceable',
+      apply,
       enforce: 'post',
       transform(code, id) {
         if (!fixReplaceableFilter(id))
@@ -111,6 +112,7 @@ const ViteFixNaiveuiIcon = ({ apply }: Option): Plugin[] => {
     {
       // 修复 naive-ui内置icon 导出直接引用导致 内存泄漏
       name: 'vite-fix-naiveui-icon-export-default',
+      apply,
       enforce: 'post',
       transform(code, id) {
         if (!fixExportDefaultFilter(id))
