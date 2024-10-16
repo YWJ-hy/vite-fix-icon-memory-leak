@@ -1,7 +1,7 @@
 {
   "name": "vite-fix-naiveui-icon-memory-leak",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "packageManager": "pnpm@7.0.0",
   "description": "fix icon memory leak",
   "author": "YWJ-hy",
