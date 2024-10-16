@@ -1,12 +1,15 @@
 import type { Plugin } from 'vite'
 import type { Option } from './types'
 import { existsSync, readFileSync } from 'node:fs'
+import { dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import MagicString from 'magic-string'
 import { createFilter } from 'vite'
 import { transformDev, transformMap } from './transformMap'
 
 const getVirtualPath = () => {
-  return __dirname.replace(/\/dist$/, '/src/virtual')
+  const _dirname_ = dirname(fileURLToPath(import.meta.url))
+  return _dirname_.replace(/[/\\]dist$/, '/src/virtual')
 }
 
 const ViteFixNaiveuiIcon = ({ apply }: Option): Plugin[] => {
