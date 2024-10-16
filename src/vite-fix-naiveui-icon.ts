@@ -1,12 +1,16 @@
 import type { Plugin } from 'vite'
 import type { Option } from './types'
-import { readFileSync } from 'node:fs'
-import path from 'node:path'
+import { existsSync, readFileSync } from 'node:fs'
 import MagicString from 'magic-string'
 import { createFilter } from 'vite'
 import { transformDev, transformMap } from './transformMap'
 
+const getVirtualPath = () => {
+  return __dirname.replace(/\/dist$/, '/src/virtual')
+}
+
 const ViteFixNaiveuiIcon = ({ apply }: Option): Plugin[] => {
+  const VirtualPath = getVirtualPath()
   let isBuild = false
   let fixReplaceableFilter: (id: string | unknown) => boolean
   let fixExportDefaultFilter: (id: string | unknown) => boolean
@@ -33,24 +37,22 @@ const ViteFixNaiveuiIcon = ({ apply }: Option): Plugin[] => {
         }
       },
       resolveId(id) {
-        if (id === 'virtual:vue-deepCloneVnode') {
-          return id
+        if (id.startsWith('virtual:fixNaiveuiIcon-path:')) {
+          return id.replace('virtual:fixNaiveuiIcon-path:', `${VirtualPath}/`)
         }
         return null
       },
       load(id) {
-        if (id === 'virtual:vue-deepCloneVnode') {
-          const filePath = path.resolve(__dirname, './src/deepCloneVnode.js')
-          const fileContent = readFileSync(filePath, 'utf-8')
-
-          return fileContent
+        if (id.startsWith(VirtualPath)) {
+          if (existsSync(id))
+            return readFileSync(id, 'utf-8')
         }
       },
       transform(code, id) {
         if (!fixReplaceableFilter(id) && !fixExportDefaultFilter(id))
           return
         const magicString = new MagicString(code)
-        magicString.prepend(`import deepCloneVnode from 'virtual:vue-deepCloneVnode';\n`)
+        magicString.prepend(`import deepCloneVnode from 'virtual:fixNaiveuiIcon-path:deepCloneVnode.js';\n`)
         return {
           code: magicString.toString(),
           map: magicString.generateMap({ source: id, hires: true }),

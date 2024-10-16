@@ -23,14 +23,14 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
     },
-    "./src/*": "./src/*"
+    "./src/virtual/*": "./src/virtual/*"
   },
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist",
-    "src/deepCloneVnode.js"
+    "src/virtual"
   ],
   "engines": {
     "node": ">=14",
