@@ -1,17 +1,19 @@
 import type { Plugin } from 'vite'
+import type { Option } from './types'
 import { readFileSync } from 'node:fs'
 import path from 'node:path'
 import MagicString from 'magic-string'
 import { createFilter } from 'vite'
 import { transformDev, transformMap } from './transformMap'
 
-const ViteFixNaiveuiIcon = (): Plugin[] => {
+const ViteFixNaiveuiIcon = ({ apply }: Option): Plugin[] => {
   let isBuild = false
   let fixReplaceableFilter: (id: string | unknown) => boolean
   let fixExportDefaultFilter: (id: string | unknown) => boolean
   return [
     {
       name: 'vite-fix-naiveui-icon:pre',
+      apply,
       enforce: 'pre',
       config(_, { command }) {
         if (command === 'build') {

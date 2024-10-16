@@ -1,11 +1,13 @@
 import type { Plugin } from 'vite'
+import type { Option } from './types'
 import MagicString from 'magic-string'
 import { createFilter } from 'vite'
 
-const ViteFixViconsHoist = (): Plugin => {
+const ViteFixViconsHoist = ({ apply }: Option): Plugin => {
   let viconFilter: (id: string | unknown) => boolean
   return {
     name: 'vite-fix-vicons-hoist',
+    apply,
     config(_, { command }) {
       if (command === 'build') {
         viconFilter = createFilter(/\/@vicons\//)
