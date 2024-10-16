@@ -3,7 +3,7 @@
 
 <template>
   <header>
-    vite-fix-icon-memory-leak
+    vite-fix-naiveui-icon-memory-leak
   </header>
 </template>
 

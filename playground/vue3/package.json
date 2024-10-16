@@ -22,7 +22,7 @@
     "npm-run-all2": "^6.2.0",
     "typescript": "~5.4.0",
     "vite": "link:../../node_modules/vite",
-    "vite-fix-icon-memory-leak": "workspace:*",
+    "vite-fix-naiveui-icon-memory-leak": "workspace:*",
     "vite-plugin-inspect": "^0.8.7",
     "vue-tsc": "^2.0.21"
   }
