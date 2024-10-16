@@ -1,6 +1,5 @@
 {
   "name": "vite-fix-naiveui-icon-memory-leak",
-  "type": "module",
   "version": "1.0.1",
   "packageManager": "pnpm@7.0.0",
   "description": "fix icon memory leak",
@@ -18,12 +17,16 @@
     "vite",
     "plugin"
   ],
-  "exports": "./dist/index.js",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "engines": {
     "node": ">=14",
     "pnpm": ">=7.0.0"
