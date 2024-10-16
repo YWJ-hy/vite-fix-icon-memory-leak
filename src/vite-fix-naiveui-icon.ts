@@ -40,7 +40,7 @@ const ViteFixNaiveuiIcon = ({ apply }: Option): Plugin[] => {
       },
       load(id) {
         if (id === 'virtual:vue-deepCloneVnode') {
-          const filePath = path.resolve(__dirname, 'deepCloneVnode.js')
+          const filePath = path.resolve(__dirname, './src/deepCloneVnode.js')
           const fileContent = readFileSync(filePath, 'utf-8')
 
           return fileContent
