@@ -8,7 +8,7 @@ import { createFilter } from 'vite'
 import { transformDev, transformMap } from './transformMap'
 
 const getVirtualPath = () => {
-  const _dirname_ = dirname(fileURLToPath(import.meta.url))
+  const _dirname_ = __dirname ?? dirname(fileURLToPath(import.meta.url))
   return _dirname_.replace(/[/\\]dist$/, '/src/virtual')
 }
 
