@@ -1,8 +1,2 @@
-# vite-plugin-templates
-  > ## 这是一个写 vite 插件的通用模板
-
-## 模板使用
-
-```js
-npx degit YWJ-hy/vite-plugin-template my-vite-plugin
-```
+# vite-fix-icon-memory-leak
+  处理@vicons图标库和naive-ui内置图标导致的内存泄漏问题

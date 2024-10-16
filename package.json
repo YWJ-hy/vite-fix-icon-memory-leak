@@ -21,6 +21,14 @@
     "release": "bumpp && npm publish",
     "play:vue3": "pnpm run --filter vue3 dev"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YWJ-hy/vite-fix-icon-memory-leak"
+  },
+  "bugs": {
+    "url": "https://github.com/YWJ-hy/vite-fix-icon-memory-leak/issues"
+  },
+  "homepage": "https://github.com/YWJ-hy/vite-fix-icon-memory-leak#readme",
   "keywords": [
     "vite",
     "plugin"
