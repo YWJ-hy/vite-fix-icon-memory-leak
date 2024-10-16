@@ -33,7 +33,7 @@
     "build": "tsup src/index.ts --dts --format cjs,esm",
     "lint": "eslint . --fix",
     "prepublishOnly": "npm run build",
-    "release": "bumpp && npm publish",
+    "release": "bumpp --tag --push --release && npm publish",
     "play:vue3": "pnpm run --filter vue3 dev"
   },
   "peerDependencies": {
