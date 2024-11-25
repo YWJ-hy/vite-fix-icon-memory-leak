@@ -23,8 +23,8 @@ const checkboxTransform = (magicString: MagicString, code: string, isBuild: bool
 
       magicString.appendLeft(
         renderStartIdx,
-        `\n  const ${CheckMarkKey} = deepCloneVnode(_${CheckMarkKey});
-             const ${LineMarkKey} = deepCloneVnode(_${LineMarkKey});`,
+        `\n  const ${CheckMarkKey} = fixNaiveuiIconCloneVnode(_${CheckMarkKey});
+             const ${LineMarkKey} = fixNaiveuiIconCloneVnode(_${LineMarkKey});`,
       )
     }
   }
@@ -51,7 +51,7 @@ const backTopTransform = (magicString: MagicString, code: string, isBuild: boole
 
       magicString.appendLeft(
         renderStartIdx,
-        `\n  const ${BackTopKey} = deepCloneVnode(_${BackTopKey});`,
+        `\n  const ${BackTopKey} = fixNaiveuiIconCloneVnode(_${BackTopKey});`,
       )
     }
   }
@@ -78,7 +78,7 @@ const rateTransform = (magicString: MagicString, code: string, isBuild: boolean)
 
       magicString.appendLeft(
         renderStartIdx,
-        `\n  const ${StarIconKey} = deepCloneVnode(_${StarIconKey});`,
+        `\n  const ${StarIconKey} = fixNaiveuiIconCloneVnode(_${StarIconKey});`,
       )
     }
   }
@@ -87,7 +87,7 @@ const rateTransform = (magicString: MagicString, code: string, isBuild: boolean)
 const resultTransform = (magicString: MagicString) => {
   magicString.replace(
     /(403|404|418|500):\s*\(\)\s*=>\s*((\w)+),/g,
-    (_, $1, $2) => `${$1}: () => deepCloneVnode(${$2}),`,
+    (_, $1, $2) => `${$1}: () => fixNaiveuiIconCloneVnode(${$2}),`,
   )
 }
 

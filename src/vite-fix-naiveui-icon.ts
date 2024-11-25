@@ -60,7 +60,7 @@ const ViteFixNaiveuiIcon = ({ apply }: Option): Plugin[] => {
         if (!fixReplaceableFilter(id) && !fixExportDefaultFilter(id))
           return
         const magicString = new MagicString(code)
-        magicString.prepend(`import deepCloneVnode from 'virtual:fixNaiveuiIcon-path:deepCloneVnode.js';\n`)
+        magicString.prepend(`import fixNaiveuiIconCloneVnode from 'virtual:fixNaiveuiIcon-path:deepCloneVnode.js';\n`)
         return {
           code: magicString.toString(),
           map: magicString.generateMap({ source: id, hires: true }),
@@ -105,7 +105,7 @@ const ViteFixNaiveuiIcon = ({ apply }: Option): Plugin[] => {
           if (setupMatch) {
             const setupStartIdx = endIdx + setupMatch.index + setupMatch[0].length
 
-            magicString.appendLeft(setupStartIdx, `\n  const icon = deepCloneVnode(_icon_);`)
+            magicString.appendLeft(setupStartIdx, `\n  const icon = fixNaiveuiIconCloneVnode(_icon_);`)
           }
         }
         return {
