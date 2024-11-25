@@ -1,9 +1,24 @@
 <script setup lang="ts">
+import { AccessibilityOutline } from "@vicons/ionicons5"
+import { Icon } from '@vicons/utils'
+import { NCheckbox } from "naive-ui";
+import { ref } from "vue";
+const show = ref(true);
+const value = ref(false);
+setTimeout(() => {
+  show.value = false;
+}, 3000)
 </script>
 
 <template>
   <header>
     vite-fix-naiveui-icon-memory-leak
+    <template v-if="show">
+      <Icon>
+      <AccessibilityOutline />
+    </Icon>
+    <NCheckbox checked-value v-model:value="value" />
+    </template>
   </header>
 </template>
 
